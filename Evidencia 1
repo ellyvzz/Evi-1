@@ -1,0 +1,34 @@
+print('Seleccione una de las siguentes opciones:')
+menu = input(print("""  A- Reservación 
+  B- Editar evento 
+  C- Reservaciones existentes 
+  D- Registro de nuevo cliente 
+  E- Registro de sala 
+  F- Salir""" )).upper()
+if menu == 'A':
+    print('Favor de elegir una sala a reservar: ')
+    #Mostrar las salas a haber y guardar la sala que se solicito reservar
+    #Tambien guardar fecha y hora de la reservacion
+elif menu == 'B':
+    print('¿Que cambios desea realizar?: ')
+    #Crear un bloque donde se pueda cambiar los datos almacenados en la consulta anterior (La reservacion de la sala, posibilidad de cambiar los datos)
+elif menu == 'C':
+    print('Seleccione fecha de registros')
+elif menu == 'D':
+    input(print('Ingresar el nombre del nuevo cliente: '))
+    #Bloque que guarde los nombres de los clientes en una lista o diccionario
+
+    #Bloque que genere una clave random de numeros y la muestre (Para clientes)
+    print('Clave')
+elif menu == 'E':
+    print('Registro de una nueva sala')
+    #Bloque que genere una clave random de numeros y la muestre (Para salas)
+    print('Clave')
+    input(print('Nombre de la sala que se desea registar: '))
+    #Crear una lista o diccionario que guarde los nombres de las salas registradas
+    input(print('Cupo de la sala que se desea registrar: '))
+    #Creae una lista o diccionario que guarde el cupo de las salas registradas
+elif menu == 'F':
+    for salir in menu:
+      if salir == 'F':
+        break
