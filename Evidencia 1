@@ -3,46 +3,46 @@ def registrar_reservacion():
     pass
 
 def editar_nombre():
-  pass
+    pass
 
 def consultar_reservacion():
-  pass
+    pass
 
 def registrar_cliente():
-  try:
-      print(f"\n{'*' * 30}REGISTRO DE CLIENTES{'*' * 30}")
-      nombre_cliente = input("\nEscibe el nombre del cliente a registrar: ")
+    try:
+        print(f"\n{'*' * 30}REGISTRO DE CLIENTES{'*' * 30}")
+        nombre_cliente = input("\nEscibe el nombre del cliente a registrar: ")
 
-      # Agrego en el dict clientes el nombre que me proporciono y le doy una clave unica automatica
-      clientes[clave_aleatoria_cliente[0]] = nombre_cliente
+        # Agrego en el dict clientes el nombre que me proporciono y le doy una clave unica automatica
+        clientes[clave_aleatoria_cliente[0]] = nombre_cliente
 
-      print(f"\nSu clave unica es: {clave_aleatoria_cliente[0]}")
-      # Elimino la clave que ya agrego al cliente, para evitar que el siguiente registro no sustiya
-      clave_aleatoria_cliente.pop(0)
-      print(clientes)
+        print(f"\nSu clave unica es: {clave_aleatoria_cliente[0]}")
+        # Elimino la clave que ya agrego al cliente, para evitar que el siguiente registro no sustiya
+        clave_aleatoria_cliente.pop(0)
+        print(clientes)
 
-  except Exception:
-      print("\nOcurrio un problema")
-  else:
-      print(f"\n{'*' * 30}SE REGISTRO EL CLIENTE CORRECTAMENTE.{'*' * 30}")
+    except Exception:
+        print("\nOcurrio un problema")
+    else:
+        print(f"\n{'*' * 30}SE REGISTRO EL CLIENTE CORRECTAMENTE.{'*' * 30}")
 
 def registrar_sala():
-  try:
-      print(f"\n{'*' * 30}REGISTRO DE SALAS{'*' * 30}")
-      nombre_de_sala = input("Nombre de la sala: ")
-      cupo_de_sala = int(input("Cupo de la sala: "))
+    try:
+        print(f"\n{'*' * 30}REGISTRO DE SALAS{'*' * 30}")
+        nombre_de_sala = input("Nombre de la sala: ")
+        cupo_de_sala = int(input("Cupo de la sala: "))
 
-      salas[clave_aleatoria_sala[0]] = nombre_de_sala, cupo_de_sala
+        salas[clave_aleatoria_sala[0]] = nombre_de_sala, cupo_de_sala
 
-      print(f"\nLa clave de la sala es: {clave_aleatoria_sala[0]}")
-      clave_aleatoria_sala.pop(0)
-      print(salas)
-  except ValueError:
-      print("\nEl dato que me proporciono no es de tipo entero.")
-  except Exception:
-      print("\nOcurrio un problema.")
-  else:
-      print(f"\n{'*' * 30}SE REGISTRO CORRECTAMENTE{'*' * 30}")
+        print(f"\nLa clave de la sala es: {clave_aleatoria_sala[0]}")
+        clave_aleatoria_sala.pop(0)
+        print(salas)
+    except ValueError:
+        print("\nEl dato que me proporciono no es de tipo entero.")
+    except Exception:
+        print("\nOcurrio un problema.")
+    else:
+        print(f"\n{'*' * 30}SE REGISTRO CORRECTAMENTE{'*' * 30}")
 
 # Declaro los diccionarios
 clientes = dict()
@@ -63,6 +63,7 @@ while True:
     [D] REGISTRAR NUEVO CLIENTE.\n
     [E] REGISTRAR NUEVA SALA.\n
     [F] Salir
+    sdfsafadsfa
     """)
     # Le pido al usuario una opcion
     opcion = input("\nSeleccione una opcion:   ")
