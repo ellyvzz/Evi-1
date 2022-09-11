@@ -63,7 +63,6 @@ while True:
     [D] REGISTRAR NUEVO CLIENTE.\n
     [E] REGISTRAR NUEVA SALA.\n
     [F] Salir
-    sdfsafadsfa
     """)
     # Le pido al usuario una opcion
     opcion = input("\nSeleccione una opcion:   ")
