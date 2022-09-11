@@ -1,6 +1,6 @@
 # Declarar funciones
 def registrar_reservacion():
-  pass
+    pass
 
 def editar_nombre():
   pass
@@ -58,10 +58,10 @@ while True:
     print("""
     -------------------------MENU PRINCIPAL------------------------------\n
     [A] REGISTRAR LA RESERVACION.\n
-    [B]	EDITAR EL NOMBRE DEL EVENTO DE UNA RESERVACION YA HECHA.\n
-    [C]	CONSULTAR LAS RESERVACIONES EXISTENTES PARA UNA FECHA ESPECIFICA.\n
-    [D]	REGISTRAR NUEVO CLIENTE.\n
-    [E]	REGISTRAR NUEVA SALA.\n
+    [B] EDITAR EL NOMBRE DEL EVENTO DE UNA RESERVACION YA HECHA.\n
+    [C] CONSULTAR LAS RESERVACIONES EXISTENTES PARA UNA FECHA ESPECIFICA.\n
+    [D] REGISTRAR NUEVO CLIENTE.\n
+    [E] REGISTRAR NUEVA SALA.\n
     [F] Salir
     """)
     # Le pido al usuario una opcion
