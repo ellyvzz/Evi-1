@@ -1,90 +1,141 @@
-# Declarar funciones
-def registrar_reservacion():
-    pass
+import datetime as dt
 
-def editar_nombre():
-    pass
-
-def consultar_reservacion():
-    pass
-
-def registrar_cliente():
+# Funciones para cada una de las opciones del menu principal
+def reservacion_de_salas():
     try:
-        print(f"\n{'*' * 30}REGISTRO DE CLIENTES{'*' * 30}")
-        nombre_cliente = input("\nEscibe el nombre del cliente a registrar: ")
+        print(f"\n{'*' * 20} RESERVACIONES DE SALAS {'*' * 20}")
+        clave_cliente_reservacion = int(input("\nPara reservar una sala, necesito la clave del cliente: "))
+        if clave_cliente_reservacion in clientes.keys():
+            # Este for me imprime las salas que se hayan registrado
+            for clave, valor in salas.items():
+                print(f"\nClave de la sala: {clave}")
+                print(f"Nombre de la sala: {valor[0]}")
+                print(f"Cupo de la sala: {valor[1]}")
+            sala_que_quiere_reservar = int(input("\nEscribe la sala que quiere reservar por su número de clave: "))
+            if sala_que_quiere_reservar in salas.keys():
+                print(f"Eligio la sala {sala_que_quiere_reservar}")
+                # Creo una variable con la fecha de hoy
+                fecha_de_hoy = dt.date.today()
+                fecha_de_reservacion = input("\nEscribe la fecha que desea reservar (AÑO-MES-DIA): ")
+                # Compruebo que me haya dado la sintaxis de la fecha correctamente
+                fecha_procesada = dt.datetime.strptime(fecha_de_reservacion, "%Y-%m-%d").date()
+                # Realizo la resta de las fechas, para despuese validar
+                resta_fechas = fecha_procesada - fecha_de_hoy
+                # Este if es para validar si la fecha ingresada es dos dias despues que la fecha de hoy
+                if resta_fechas.days < 2 and resta_fechas.days >= 0:
+                    print("\nLa reservación debe hacerse dos días antes del día elegido.")
+                elif resta_fechas.days < 0:
+                    print("\nEsa fecha ya paso.")
+                else:
+                    turno_de_reservacion = input("\nEscribe el turno que desea (MATUTINO, VESPERTINO Y NOCTURNO): ")
+                    if turno_de_reservacion.upper() != "MATUTINO" and turno_de_reservacion.upper() != "VESPERTINO" and turno_de_reservacion.upper()!= "NOCTURNO":
+                        print("\nElija un turno que exista.")
+                    else:
+                        nombre_evento = input("\nEscribe el nombre del evento: ")
+                        # Este for me itera por posicion de las lista, para saber si hay datos repetidos y asi saber si esta ocupada la reservacion que puso el usuario
+                        for i in range(0,len(reservacion)):
+                            if sala_que_quiere_reservar == reservacion[i][1] and fecha_procesada == reservacion[i][2] and turno_de_reservacion == reservacion[i][3]:
+                                print("\nEstá ocupada esa fecha y horario.")
+                                break
+                            else:
+                                print("\nReservarción disponible.")
+                        # Cuando termine de iterar, que todo este correcto lo agrega a la lista
+                        else:
+                            reservacion.append((folio_reservacion[0], sala_que_quiere_reservar, fecha_procesada.strftime("%d/%m/%Y"), turno_de_reservacion, nombre_evento))
+                            # Elimino el dato de la posicion 0 de mi lista folio, esto es para que no sustituya mis claves unicas
+                            folio_reservacion.pop(0)
+                            print(reservacion)
+                            print(f"\n{'*' * 20} SE RESERVO CORRECTAMENTE {'*' * 20}")
+            else:
+                print("\nNo se encontró la clave de la sala que proporciono.")
+        else:
+            print("\nNingún cliente tiene esa clave.")
+    except ValueError:
+        print("\nEl dato que me proporciono no es correcto.")
+    except Exception:
+        print("\nOcurrió un problema.")
+    else:
+        pass
+
+def editar_nombre_reservacion():
+    pass
+
+def consultar_reservaciones():
+    pass
+
+def registrar_clientes():
+    try:
+        print(f"\n{'*' * 20} REGISTRO DE CLIENTES {'*' * 20}")
+        nombre_cliente = input("\nEscribe el nombre del cliente a registrar: ")
 
         # Agrego en el dict clientes el nombre que me proporciono y le doy una clave unica automatica
         clientes[clave_aleatoria_cliente[0]] = nombre_cliente
 
-        print(f"\nSu clave unica es: {clave_aleatoria_cliente[0]}")
-        # Elimino la clave que ya agrego al cliente, para evitar que el siguiente registro no sustiya
+        print(f"\nSu clave única es: {clave_aleatoria_cliente[0]}")
+        # Elimino la clave que ya agrego a algun cliente
         clave_aleatoria_cliente.pop(0)
-        print(clientes)
-
+        print(f"\n{'*' * 20} SE REGISTRO EL CLIENTE CORRECTAMENTE. {'*' * 20}")
     except Exception:
-        print("\nOcurrio un problema")
+        print("\nOcurrió un problema.")
     else:
-        print(f"\n{'*' * 30}SE REGISTRO EL CLIENTE CORRECTAMENTE.{'*' * 30}")
+        pass
 
 def registrar_sala():
     try:
-        print(f"\n{'*' * 30}REGISTRO DE SALAS{'*' * 30}")
-        nombre_de_sala = input("Nombre de la sala: ")
-        cupo_de_sala = int(input("Cupo de la sala: "))
+        print(f"\n{'*' * 20} REGISTRO DE SALAS {'*' * 20}")
+        nombre_de_sala = input("\nNombre de la sala: ")
+        cupo_de_sala = int(input("\nCupo de la sala: "))
 
         salas[clave_aleatoria_sala[0]] = nombre_de_sala, cupo_de_sala
 
         print(f"\nLa clave de la sala es: {clave_aleatoria_sala[0]}")
         clave_aleatoria_sala.pop(0)
-        print(salas)
+        print(f"\n{'*' * 20} SE REGISTRO CORRECTAMENTE {'*' * 20}")
     except ValueError:
         print("\nEl dato que me proporciono no es de tipo entero.")
     except Exception:
-        print("\nOcurrio un problema.")
+        print("\nOcurrió un problema.")
     else:
-        print(f"\n{'*' * 30}SE REGISTRO CORRECTAMENTE{'*' * 30}")
+        pass
 
-# Declaro los diccionarios
+# Declaro los diccionarios vacios
 clientes = dict()
 salas = dict()
+reservacion = list()
 
-# Creo las claves unicas en una lista para cada registro que necesite
-clave_aleatoria_cliente = [clave for clave in range(100,10000)]
+# Creo una lista para mis claves unicas
+clave_aleatoria_cliente = [clave for clave in range(100,1000)]
 clave_aleatoria_sala = [clave for clave in range(1,101)]
+folio_reservacion = [folio for folio in range(2000,10000)]
+
 
 # Menu principal
 while True:
 
     print("""
-    -------------------------MENU PRINCIPAL------------------------------\n
+    --------------------------------MENU PRINCIPAL--------------------------------\n
     [A] REGISTRAR LA RESERVACION.\n
-    [B] EDITAR EL NOMBRE DEL EVENTO DE UNA RESERVACION YA HECHA.\n
-    [C] CONSULTAR LAS RESERVACIONES EXISTENTES PARA UNA FECHA ESPECIFICA.\n
-    [D] REGISTRAR NUEVO CLIENTE.\n
-    [E] REGISTRAR NUEVA SALA.\n
+    [B]	EDITAR EL NOMBRE DEL EVENTO DE UNA RESERVACION YA HECHA.\n
+    [C]	CONSULTAR LAS RESERVACIONES EXISTENTES PARA UNA FECHA ESPECIFICA.\n
+    [D]	REGISTRAR NUEVO CLIENTE.\n
+    [E]	REGISTRAR NUEVA SALA.\n
     [F] Salir
     """)
-    # Le pido al usuario una opcion
-    opcion = input("\nSeleccione una opcion:   ")
+    # Imprime el programa
+    opcion = input("\nSeleccione una opción:   ")
 
-    # Estos ifs son para comprobar que opcion selecciono el usuario, si no dio alguna de las opciones mostradas, que repita de nuevo
     if opcion.upper() == "A":
-        registrar_reservacion()
-
+        reservacion_de_salas()
     elif opcion.upper() == "B":
-        editar_nombre()
-
+        editar_nombre_reservacion()
     elif opcion.upper() == "C":
-        consultar_reservacion()
-
+        consultar_reservaciones()
     elif opcion.upper() == "D":
-        registrar_cliente()
-
+        registrar_clientes()
     elif opcion.upper() == "E":
         registrar_sala()
-
     elif opcion.upper() == "F":
         print("\nFIN DEL PROGRAMA")
         break
     else:
-        print("\nDEBE SELECCIONAR UNA DE LAS OPCIONES MOSTRADAS. INTENTE DE NUEVO")
+        print("Error. Debe seleccionar las opciones que hay.")
