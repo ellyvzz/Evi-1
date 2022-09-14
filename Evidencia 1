@@ -61,7 +61,27 @@ def editar_nombre_reservacion():
     pass
 
 def consultar_reservaciones():
-    pass
+    try:
+        print(f"\n{'*' * 20} CONSULTA DE RESERVACIONES {'*' * 20}")
+        consulta = input("\nIngrese la fecha de la reservacion a consultar (DIA-MES-AÑO): ")
+
+        # Si no hay un elemento con esa fecha, manda mensaje. 
+
+        # De lo contrario, mostrará los datos de la reservacion. 
+
+        # Usare un get() para validar y mostrar los datos. 
+
+        # Pondré el resultado de get() en una variable llamada consulta. 
+
+        consulta=reservacion.get(fecha_procesada.strftime("%d/%m/%Y")) 
+
+        print(f"\nLos datos de la reservacion son: {consulta}")
+
+    except:
+        print("\nLa reservacion no existe")
+
+    else:
+        pass
 
 def registrar_clientes():
     try:
