@@ -18,8 +18,8 @@ def reservacion_de_salas():
                 fecha_de_hoy = dt.date.today()
                 fecha_de_reservacion = input("\nEscribe la fecha que desea reservar (AÑO-MES-DIA): ")
                 # Compruebo que me haya dado la sintaxis de la fecha correctamente
-                fecha_procesada = dt.datetime.strptime(fecha_de_reservacion, "%Y-%m-%d").date()
-                # Realizo la resta de las fechas, para despuese validar
+                fecha_procesada=dt.datetime.strptime(fecha_de_reservacion, "%Y/%m/%d").date()
+                # Realizo la resta de las fechas, para despues validar
                 resta_fechas = fecha_procesada - fecha_de_hoy
                 # Este if es para validar si la fecha ingresada es dos dias despues que la fecha de hoy
                 if resta_fechas.days < 2 and resta_fechas.days >= 0:
